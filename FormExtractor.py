@@ -21,7 +21,7 @@ def parse_response(url, text):
 
         data = {
             'action': url,
-            'method': 'POST',
+            'method': 'GET',
             'name': None,
             'parameters': []
         }
