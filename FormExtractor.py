@@ -1,13 +1,14 @@
 import json
 import argparse
 import requests
+import urllib3
 
 from io import StringIO
 from lxml import etree
 
 
 def download_site(url):
-    return requests.get(url).text
+    return requests.get(url, verify=False).text
 
 
 def parse_response(url, text):
@@ -65,6 +66,8 @@ def main():
     parser.add_argument('url', type=str, help='Target url')
 
     args = parser.parse_args()
+
+    urllib3.disable_warnings()
 
     url = args.url
 
